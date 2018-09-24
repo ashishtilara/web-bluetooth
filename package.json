@@ -1,6 +1,6 @@
 {
-  "name": "web-bluetooth-example",
-  "version": "0.0.0",
+  "name": "@ashishtilara/web-bluetooth",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
