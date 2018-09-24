@@ -32,5 +32,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ng build --base-href "https://ashishtilara.github.io/web-bluetooth/"
 
 npm i -g angular-cli-ghpages
-angular-cli-ghpages --dir=./dist/web-bluetooth-example/ --branch=ghpages
+angular-cli-ghpages --dir=./dist/web-bluetooth-example/ --branch=gh-pages
 ```

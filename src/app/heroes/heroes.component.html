@@ -1,10 +1,51 @@
 <h2>Event Listener</h2>
 
-<button (click)="onRegisterBluetooth()">Bluetooth</button>
-
-<ul class="heroes">
-  <li *ngFor="let event of events"
-      [class.selected]="false">
-    <span class="badge">{{event.id}}</span> {{event.name}}
-  </li>
-</ul>
+<div class="row">
+  <div class="col-sm">
+    <button type="button" class="btn btn-primary" (click)="onRegisterBluetooth()">Connect to Bluetooth Device</button>
+  </div>
+</div>
+<hr>
+<div class="row" *ngIf="device">
+  <div class="col-8">
+    <div class="mcard">
+      <div class="mcard-header bgm-blue ch-alt">
+        <h2>Device <small>Select Message Type and Data Source</small></h2>
+      </div>
+      <div class="mcard-body mcard-padding">
+        <ul>
+          <li><strong>ID:</strong> {{device.id}}</li>
+          <li><strong>Name:</strong> {{device.name}}</li>
+          <li>
+            <strong>Services:</strong>
+            <ul *ngFor="let e of services">
+              <li>{{e.uuid}} <button type="button" class="btn btn-sm btn-primary" (click)="getCharacteristic(e)">Characteristics</button></li>
+              <li *ngIf="chars[e.uuid]">
+                <ul>
+                  <li *ngFor="let c of chars[e.uuid]">{{c.uuid}}
+                    <button *ngIf="c.properties.notify" type="button" class="btn btn-sm btn-primary" (click)="setListener(c)">Notify</button>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="mcard">
+      <div class="mcard-header bgm-bluegray ch-alt">
+        <h2>Logs <small>Select Message Type and Data Source</small></h2>
+      </div>
+      <div class="mcard-body mcard-padding">
+        <ul>
+          <li *ngFor="let event of events"
+              [class.selected]="false">
+            <span class="badge" *ngIf="event.id !== '-'">{{event.id}}</span> {{event.name}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
